@@ -1,0 +1,30 @@
+{
+    "name": "QCYX/laravel-rbac",
+    "description": "QCYX laravel rbac.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Edward",
+            "email": "1226642@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "QCYX\\LaravelRbac\\": "src/"
+        },
+        "classmap": [
+            "src/"
+        ]
+    },
+    "require": {
+        "php": "^7.0",
+        "QCYX/laravel-api": "dev-master"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "QCYX\\LaravelRbac\\Providers\\QcPlayProvider"
+            ]
+        }
+    }
+}
