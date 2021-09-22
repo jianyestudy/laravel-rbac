@@ -18,7 +18,7 @@
     },
     "require": {
         "php": "^7.0",
-        "QCYX/laravel-api": "dev-master"
+        "qcyx/laravel-api": "dev-master"
     },
     "extra": {
         "laravel": {
