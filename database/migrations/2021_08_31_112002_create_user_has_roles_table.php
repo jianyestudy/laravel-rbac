@@ -13,18 +13,19 @@ class CreateUserHasRolesTable extends Migration
 {
     public function up(): void
     {
-        Schema::create('user_has_roles', function (Blueprint $table) {
+        Schema::create('user_role', function (Blueprint $table) {
             //用户角色表
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned()->comment('用户id');
-            $table->json('role_ids')->comment('角色id');
+            $table->integer('role_id')->comment('角色id');
             $table->timestamps();
-            $table->softDeletes();
         });
+
+        DB::statement("ALTER TABLE user_role COMMENT = '用户角色关联表'");//表注释
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('user_has_roles');
+        Schema::dropIfExists('user_role');
     }
 }

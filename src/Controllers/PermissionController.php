@@ -2,123 +2,32 @@
 
 namespace QCYX\LaravelRbac\Controllers;
 
-use App\Http\Controllers\Controller;
-use QCYX\LaravelApi\Exceptions\ResultException;
+use Illuminate\Database\Eloquent\Builder;
+use QCYX\LaravelApi\Controllers\BaseController;
 use QCYX\LaravelApi\Traits\ResultTrait;
 use QCYX\LaravelRbac\Models\Permission;
 use QCYX\LaravelRbac\Requests\PermissionRequest;
 
-class PermissionController extends Controller
+class PermissionController extends BaseController
 {
     use ResultTrait;
-    protected  $model;
-
-    public function __construct(Permission $permission)
+    public function __construct(PermissionRequest $request, Permission $model)
     {
-        $this->model = $permission;
+        $this->request = $request;
+        $this->model   = $model;
     }
 
     /**
-     * 权限列表
-     * @param PermissionRequest $request
-     * @throws ResultException
-     * @Another Edward Yu 2021/9/6下午3:14
+     * 按名称筛选
+     * @param Builder $builder
+     * @param array $requestData
+     * @Another Edward Yu 2021/9/27下午8:24
      */
-    public function index(PermissionRequest $request): void
+    public function indexSearch(Builder $builder, array  $requestData):void
     {
-        $requestData = $request->indexCheck($request->toArray()());
-
-        $builder = Permission::query();
-
-        if (!empty($requestData['keyword'])) {
-            $builder->where('title', $requestData['keyword']);
+        if ( !empty($requestData['keyword']) ) {
+            $keyword = $requestData['keyword'];
+            $builder->where('name', 'like', "%$keyword%");
         }
-
-        //查询类型
-        if ( !empty($requestData['type']) && ($requestData['type'] === 'all' ) ){
-            $result = $builder->get();
-        }else{
-            $limit = $requestData['limit'] ?? 10;
-            $result = $builder->paginate($limit);
-        }
-
-        $this->success($result);
-    }
-
-    /**
-     * 新增权限
-     * @param PermissionRequest $request
-     * @throws ResultException
-     * @Another Edward Yu 2021/9/6下午3:15
-     */
-    public function store(PermissionRequest $request): void
-    {
-        $requestData = $request->storeCheck($request->toArray()());
-
-        $filled  = $this->model->fill($requestData)->save();
-
-        if ( !$filled ) {
-            $this->error();
-        }
-        $this->success();
-
-
-    }
-
-    /**
-     * 展示详情
-     * @param PermissionRequest $request
-     * @param int $id
-     * @throws ResultException
-     * @Another Edward Yu 2021/9/6下午3:17
-     */
-    public function show(PermissionRequest $request, int $id): void
-    {
-        $request->showCheck($request->toArray());
-
-        $result = Permission::query()->find($id);
-
-        if ($result->isEmpty()) {
-            $this->noData();
-        }
-
-        $this->success($result);
-    }
-
-    /**
-     * 更新权限
-     * @param PermissionRequest $request
-     * @param int $id
-     * @throws ResultException
-     * @Another Edward Yu 2021/9/6下午3:18
-     */
-    public function update(PermissionRequest $request, int $id): void
-    {
-        $requestData = $request->updateCheck($request->toArray());
-
-        $find = Permission::query()->firstOr($id, function (){
-            $this->noData();
-        });
-
-        $result = $find->fill($requestData)->save();
-
-        if (!$result) {
-            $this->error();
-        }
-        $this->success();
-    }
-
-    /**
-     * 删除权限
-     * @param int $id
-     * @throws ResultException
-     * @Another Edward Yu 2021/9/6下午3:20
-     */
-    public function destroy(int $id): void
-    {
-        if (Permission::destroy($id)) {
-            $this->error();
-        }
-        $this->success();
     }
 }

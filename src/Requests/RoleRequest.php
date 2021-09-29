@@ -4,6 +4,8 @@ namespace QCYX\LaravelRbac\Requests;
 
 use Illuminate\Validation\Rule;
 use QCYX\LaravelApi\Validates\BaseValidate;
+use QCYX\LaravelRbac\Interfaces\RoleStatusInterface;
+use QCYX\LaravelRbac\Models\Role;
 
 class RoleRequest extends BaseValidate
 {
@@ -15,48 +17,48 @@ class RoleRequest extends BaseValidate
     public function rules(): array
     {
         return [
-            'id' => ['bail', 'required', 'numeric', Rule::exists('roles', 'id')->whereNull('deleted_at')],
-            'pid' => ['bail', 'numeric','nullable', Rule::exists('roles', 'id')->whereNull('deleted_at')],
-            'name' => ['bail', 'string', 'max:20', 'unique:roles,name', 'required'],
+            'id'     => ['bail', 'required', 'numeric', Rule::exists(Role::class, 'id')->whereNull('deleted_at')],
+            'name'   => ['bail', 'string', 'unique:roles,name,null,id,deleted_at,NULL', 'required'],
+            'flag'   => ['bail', 'string', 'max:20', 'required'],
+            'status' => ['bail', 'numeric', Rule::in(array_keys(RoleStatusInterface::MSG))],
+            'sort'   => ['bail', 'numeric'],
             'remark' => ['bail', 'string', 'max:50'],
-
-            'type' => ['bail', 'nullable','string', Rule::in(['all', 'page'])],
-            'limit' => ['bail', 'nullable', 'numeric', 'max:10000'],
-            'page' => ['bail', 'nullable','numeric'],
-            'keyword' => ['bail','nullable', 'string'],
         ];
     }
 
     public function attributes(): array
     {
         return [
-            'pid' => '父级',
-            'name' => '角色名',
-            'remark' => '备注',
-            'type' => '分页类型',
-            'limit' => '条数',
-            'page' => '页码',
-            'keyword' => '角色名',
+            'name'      => '角色名',
+            'status'    => '角色状态',
+            'flag'      => '角色标识',
+            'sort'      => '排序',
+            'remark'    => '备注',
         ];
     }
 
-    public function indexCheck(array $data): array
+    public function indexValidate(): array
     {
-        return $this->scene($data, $this->many(['type', 'limit', 'page', 'keyword', 'pid']));
+        return $this->scene([], true);
     }
 
-    public function storeCheck(array $data): array
+    public function storeValidate(): array
     {
-        return $this->scene($data, $this->many(['name', 'remark', 'pid']));
+        return $this->scene($this->take(['name', 'remark', 'flag', 'status', 'sort']));
     }
 
-    public function showCheck(array $data): array
+    public function showValidate(): array
     {
-        return $this->scene($data, $this->many(['id']));
+        return $this->scene($this->take(['id']));
     }
 
-    public function updateCheck(array $data):array
+    public function updateValidate():array
     {
-        return $this->scene($data, $this->many(['id', 'name', 'remark', 'pid']));
+        return $this->scene($this->autoTake());
+    }
+
+    public function destroyValidate():array
+    {
+        return $this->scene($this->take(['id']));
     }
 }

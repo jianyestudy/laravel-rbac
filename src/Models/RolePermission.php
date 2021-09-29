@@ -5,9 +5,9 @@ namespace QCYX\LaravelRbac\Models;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use QCYX\LaravelApi\Models\BaseModel;
 
-class Permission extends BaseModel
+class RolePermission extends BaseModel
 {
     use SoftDeletes;
 
-    protected $table = 'menu_permissions';
+    protected $table = 'role_permissions';
 }

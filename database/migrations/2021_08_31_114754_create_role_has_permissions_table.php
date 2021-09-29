@@ -13,18 +13,18 @@ class CreateRoleHasPermissionsTable extends Migration
 {
     public function up(): void
     {
-        Schema::create('role_has_permissions', function (Blueprint $table) {
+        Schema::create('role_permissions', function (Blueprint $table) {
             // 角色与权限关联表
             $table->bigIncrements('id');
-            $table->integer('role_id')->unsigned()->comment('角色id')->unique();
-            $table->json('permission_ids')->comment('权限ids');
+            $table->unsignedInteger('role_id')->unsigned()->comment('角色id');
+            $table->unsignedInteger('permission_id')->comment('权限id');
             $table->timestamps();
-            $table->softDeletes();
         });
+        DB::statement("ALTER TABLE role_permissions COMMENT = '角色菜单关联'");//表注释
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('role_has_permissions');
+        Schema::dropIfExists('role_permissions');
     }
 }
