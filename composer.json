@@ -18,7 +18,7 @@
     },
     "require": {
         "php": "^7.0",
-        "QCS/laravel-api": "dev-main"
+        "qcs/laravel-api": "dev-main"
     },
     "extra": {
         "laravel": {
