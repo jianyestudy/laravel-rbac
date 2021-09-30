@@ -1,4 +1,4 @@
-**基于Laravel设计的Restful风格rbac三方包，该包依赖laravel-api扩展包， 包地址：https://github.com/jianyestudy/laravel-api**
+**基于Laravel设计的Restful风格rbac三方包，该包依赖laravel-api扩展包**
 
 
 ##### 安装说明：
