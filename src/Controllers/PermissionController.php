@@ -1,12 +1,12 @@
 <?php
 
-namespace QCYX\LaravelRbac\Controllers;
+namespace QCS\LaravelRbac\Controllers;
 
 use Illuminate\Database\Eloquent\Builder;
-use QCYX\LaravelApi\Controllers\BaseController;
-use QCYX\LaravelApi\Traits\ResultTrait;
-use QCYX\LaravelRbac\Models\Permission;
-use QCYX\LaravelRbac\Requests\PermissionRequest;
+use QCS\LaravelApi\Controllers\BaseController;
+use QCS\LaravelApi\Traits\ResultTrait;
+use QCS\LaravelRbac\Models\Permission;
+use QCS\LaravelRbac\Requests\PermissionRequest;
 
 class PermissionController extends BaseController
 {

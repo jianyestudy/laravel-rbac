@@ -1,6 +1,6 @@
 <?php
 
-namespace QCYX\LaravelRbac\Interfaces;
+namespace QCS\LaravelRbac\Interfaces;
 /**
  * User: Edward Yu
  * Date: 2021/9/24
@@ -11,7 +11,7 @@ interface PermissionInterfaces
         public const DIRECTORY      = 2;
         public const BUTTON         = 3;
 
-        public const UNHIDDEN      = 0;
+        public const VISITABLE      = 0;
         public const HIDDEN         = 1;
 
         public const TYPE_MSG = [
@@ -21,7 +21,7 @@ interface PermissionInterfaces
         ];
 
         public const HIDDEN_MSG = [
-          self::UNHIDDEN    => '显示',
+          self::VISITABLE    => '显示',
           self::HIDDEN      => '隐藏'
         ];
 }

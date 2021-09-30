@@ -1,11 +1,11 @@
 <?php
 
-namespace QCYX\LaravelRbac\Requests;
+namespace QCS\LaravelRbac\Requests;
 
 use Illuminate\Validation\Rule;
-use QCYX\LaravelApi\Validates\BaseValidate;
-use QCYX\LaravelRbac\Interfaces\RoleStatusInterface;
-use QCYX\LaravelRbac\Models\Role;
+use QCS\LaravelApi\Validates\BaseValidate;
+use QCS\LaravelRbac\Interfaces\RoleStatusInterface;
+use QCS\LaravelRbac\Models\Role;
 
 class RoleRequest extends BaseValidate
 {

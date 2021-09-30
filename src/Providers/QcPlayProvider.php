@@ -1,11 +1,11 @@
 <?php
 
-namespace QCYX\LaravelRbac\Providers;
+namespace QCS\LaravelRbac\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use QCYX\LaravelRbac\Controllers\PermissionController;
-use QCYX\LaravelRbac\Controllers\RoleController;
+use QCS\LaravelRbac\Controllers\PermissionController;
+use QCS\LaravelRbac\Controllers\RoleController;
 
 class QcPlayProvider extends ServiceProvider
 {

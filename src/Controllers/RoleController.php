@@ -1,12 +1,12 @@
 <?php
 
-namespace QCYX\LaravelRbac\Controllers;
+namespace QCS\LaravelRbac\Controllers;
 
 use Illuminate\Database\Eloquent\Builder;
-use QCYX\LaravelApi\Controllers\BaseController;
-use QCYX\LaravelApi\Traits\ResultTrait;
-use QCYX\LaravelRbac\Models\Role;
-use QCYX\LaravelRbac\Requests\RoleRequest;
+use QCS\LaravelApi\Controllers\BaseController;
+use QCS\LaravelApi\Traits\ResultTrait;
+use QCS\LaravelRbac\Models\Role;
+use QCS\LaravelRbac\Requests\RoleRequest;
 
 class RoleController extends BaseController
 {

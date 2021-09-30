@@ -1,5 +1,5 @@
 {
-    "name": "qcyx/laravel-rbac",
+    "name": "QCS/laravel-rbac",
     "description": "QCGame laravel rbac.",
     "license": "MIT",
     "authors": [
@@ -10,7 +10,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "QCYX\\LaravelRbac\\": "src/"
+            "QCS\\LaravelRbac\\": "src/"
         },
         "classmap": [
             "src/"
@@ -18,12 +18,12 @@
     },
     "require": {
         "php": "^7.0",
-        "qcyx/laravel-api": "dev-master"
+        "QCS/laravel-api": "dev-master"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "QCYX\\LaravelRbac\\Providers\\QcPlayProvider"
+                "QCS\\LaravelRbac\\Providers\\QcPlayProvider"
             ]
         }
     }

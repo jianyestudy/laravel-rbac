@@ -1,9 +1,9 @@
 <?php
 
-namespace QCYX\LaravelRbac\Models;
+namespace QCS\LaravelRbac\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
-use QCYX\LaravelApi\Models\BaseModel;
+use QCS\LaravelApi\Models\BaseModel;
 
 class Role extends BaseModel
 {

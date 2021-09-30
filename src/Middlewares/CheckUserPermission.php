@@ -1,14 +1,14 @@
 <?php
 
-namespace QCYX\LaravelRbac\Middlewares;
+namespace QCS\LaravelRbac\Middlewares;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use QCYX\LaravelApi\Exceptions\ResultException;
-use QCYX\LaravelApi\Interfaces\ResultCodeInterface;
-use QCYX\LaravelApi\Interfaces\ResultMsgInterface;
-use QCYX\LaravelApi\Traits\ResultTrait;
+use QCS\LaravelApi\Exceptions\ResultException;
+use QCS\LaravelApi\Interfaces\ResultCodeInterface;
+use QCS\LaravelApi\Interfaces\ResultMsgInterface;
+use QCS\LaravelApi\Traits\ResultTrait;
 
 class CheckUserPermission
 {

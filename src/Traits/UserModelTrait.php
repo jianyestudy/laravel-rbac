@@ -1,10 +1,10 @@
 <?php
 
-namespace QCYX\LaravelRbac\Traits;
+namespace QCS\LaravelRbac\Traits;
 
 use Illuminate\Support\Collection;
-use QCYX\LaravelRbac\Models\Role;
-use QCYX\LaravelRbac\Models\UserRole;
+use QCS\LaravelRbac\Models\Role;
+use QCS\LaravelRbac\Models\UserRole;
 
 /**
  * User: Edward Yu

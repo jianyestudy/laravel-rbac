@@ -1,6 +1,6 @@
 <?php
 
-namespace QCYX\LaravelRbac\Interfaces;
+namespace QCS\LaravelRbac\Interfaces;
 /**
  * User: Edward Yu
  * Date: 2021/9/24

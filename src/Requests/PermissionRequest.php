@@ -1,10 +1,10 @@
 <?php
 
-namespace QCYX\LaravelRbac\Requests;
+namespace QCS\LaravelRbac\Requests;
 
 use Illuminate\Validation\Rule;
-use QCYX\LaravelApi\Validates\BaseValidate;
-use QCYX\LaravelRbac\Interfaces\PermissionInterfaces;
+use QCS\LaravelApi\Validates\BaseValidate;
+use QCS\LaravelRbac\Interfaces\PermissionInterfaces;
 
 class PermissionRequest extends BaseValidate
 {
