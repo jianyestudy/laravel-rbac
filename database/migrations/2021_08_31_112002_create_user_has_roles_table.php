@@ -21,7 +21,7 @@ class CreateUserHasRolesTable extends Migration
             $table->timestamps();
         });
 
-        DB::statement("ALTER TABLE user_role COMMENT = '用户角色关联表'");//表注释
+        DB::statement("ALTER TABLE user_roles COMMENT = '用户角色关联表'");//表注释
     }
 
     public function down(): void
