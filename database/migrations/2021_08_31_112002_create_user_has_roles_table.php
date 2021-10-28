@@ -13,7 +13,7 @@ class CreateUserHasRolesTable extends Migration
 {
     public function up(): void
     {
-        Schema::create('user_role', function (Blueprint $table) {
+        Schema::create('user_roles', function (Blueprint $table) {
             //用户角色表
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned()->comment('用户id');
@@ -26,6 +26,6 @@ class CreateUserHasRolesTable extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('user_role');
+        Schema::dropIfExists('user_roles');
     }
 }

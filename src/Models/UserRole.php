@@ -9,5 +9,5 @@ class UserRole extends BaseModel
 {
     use SoftDeletes;
 
-    protected $table = 'user_role';
+    protected $table = 'user_roles';
 }
