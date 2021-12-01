@@ -35,6 +35,9 @@ class QcPlayProvider extends ServiceProvider
         Route::group(['middleware' => ['api']], function ($router) {
             $router->apiResource('/api/roles', RoleController::class)->parameters(['roles' => 'id']);
             $router->apiResource('/api/permissions', PermissionController::class)->parameters(['permissions' => 'id']);
+
+            $router->get('/api/roles_simple',[RoleController::class,'simple']);
+            $router->get('/api/permissions_simple',[PermissionController::class,'simple']);
         });
     }
 }

@@ -18,11 +18,12 @@ class RoleRequest extends BaseValidate
     {
         return [
             'id'     => ['bail', 'required', 'numeric', Rule::exists(Role::class, 'id')->whereNull('deleted_at')],
-            'name'   => ['bail', 'string', 'unique:roles,name,null,id,deleted_at,NULL', 'required'],
+            'name'   => ['bail', 'string', 'unique:roles,name,'.$this->route('id'), 'required'],
             'flag'   => ['bail', 'string', 'max:20', 'required'],
             'status' => ['bail', 'numeric', Rule::in(array_keys(RoleStatusInterface::MSG))],
             'sort'   => ['bail', 'numeric'],
             'remark' => ['bail', 'string', 'max:50'],
+            'permission_ids' => ['bail', 'required' ,'json'],
         ];
     }
 
@@ -34,6 +35,7 @@ class RoleRequest extends BaseValidate
             'flag'      => '角色标识',
             'sort'      => '排序',
             'remark'    => '备注',
+            'permission_ids' => '权限id'
         ];
     }
 
@@ -44,7 +46,7 @@ class RoleRequest extends BaseValidate
 
     public function storeValidate(): array
     {
-        return $this->scene($this->take(['name', 'remark', 'flag', 'status', 'sort']));
+        return $this->scene($this->take(['name', 'permission_ids' ,'remark', 'flag', 'status', 'sort']));
     }
 
     public function showValidate(): array

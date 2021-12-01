@@ -18,6 +18,7 @@ class CreateRoleHasPermissionsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('role_id')->unsigned()->comment('角色id');
             $table->unsignedInteger('permission_id')->comment('权限id');
+            $table->tinyInteger('is_half_select')->comment('是否是半选中的权限 1是 2否');
             $table->timestamps();
         });
         DB::statement("ALTER TABLE role_permissions COMMENT = '角色菜单关联'");//表注释
