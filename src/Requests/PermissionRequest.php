@@ -46,7 +46,7 @@ class PermissionRequest extends BaseValidate
 
     public function indexValidate(): array
     {
-        return $this->scene([],true);
+        return $this->scene($this->autoTake(),true);
     }
 
     public function storeValidate(): array
