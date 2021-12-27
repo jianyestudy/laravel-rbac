@@ -12,7 +12,7 @@ class Role extends BaseModel
 
     public function permissions(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Permission::class, RolePermission::class)->withPivot('is_half_select');
+        return $this->belongsToMany(Permission::class, RolePermission::class);
     }
 
     public function users()
