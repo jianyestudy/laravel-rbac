@@ -3,6 +3,7 @@
 
 ##### 安装说明：
 
+```
 1. composer require qcs/laravel-rbac
 2. 发布迁移文件，路由等：php artisan vendor:publish --provider="QCS\LaravelRbac\Providers\QcPlayProvider"
 3. laravel5.5以下 在config/app.php文件provides 中添加\QCS\LaravelRbac\Providers\QcPlayProvider::class, ，laravel5.5以上自动发现
